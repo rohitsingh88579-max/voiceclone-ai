@@ -1,0 +1,85 @@
+// Version: 1.0.0
+type CloneStatus__298759347 = {#failed : Text; #pending; #processing; #ready};
+type Data__791452850<K, V> =
+  {var count : Nat__490723111; kvs : [var ?(K, V)]};
+type ExternalBlob__246066408 = Blob;
+type Internal__8484328<K, V> =
+  {children : [var ?Node__46230540<K, V>]; data : Data__791452850<K, V>};
+type Leaf__809889148<K, V> = {data : Data__791452850<K, V>};
+type Map__158565046<K, V> = Map__297112838<K, V>;
+type Map__297112838<K, V> =
+  {var root : Node__46230540<K, V>; var size : Nat__490723111};
+type Map__605269027<K, V> = Map__158565046<K, V>;
+type Nat__490723111 = Nat__920180692;
+type Nat__920180692 = Nat;
+type Node__46230540<K, V> =
+  {#internal : Internal__8484328<K, V>; #leaf : Leaf__809889148<K, V>};
+type ProjectId__478417951 = Nat;
+type SynthesisId__674278184 = Nat;
+type SynthesisRecord__99289552 =
+  {
+    audioBlob : ExternalBlob__246066408;
+    createdAt : Timestamp__301639476;
+    id : SynthesisId__674278184;
+    owner : UserId__158757552;
+    projectId : ProjectId__478417951;
+    settings : SynthesisSettings__671490298;
+    text : Text
+  };
+type SynthesisSettings__671490298 =
+  {similarityBoost : Float; stability : Float; style : Float};
+type Timestamp__301639476 = Int;
+type UserId__158757552 = Principal;
+type UserRole__1054455867 = {#admin; #guest; #user};
+type VoiceId__671297562 = Text;
+type VoiceProject__630031658 =
+  {
+    createdAt : Timestamp__301639476;
+    description : Text;
+    var elevenLabsVoiceId : ?VoiceId__671297562;
+    id : ProjectId__478417951;
+    var lastUsedAt : ?Timestamp__301639476;
+    name : Text;
+    owner : UserId__158757552;
+    var status : CloneStatus__298759347
+  };
+type VoiceSample__168625415 =
+  {
+    blob : ExternalBlob__246066408;
+    filename : Text;
+    id : Nat;
+    owner : UserId__158757552;
+    projectId : ProjectId__478417951;
+    uploadedAt : Timestamp__301639476
+  };
+actor {
+  stable var _elevenLabsApiKey : {var value : Text};
+  stable var _nextProjectId : {var value : Nat};
+  stable var _nextSampleId : {var value : Nat};
+  stable var _nextSynthesisId : {var value : Nat};
+  stable _userApiKeys :
+    {var root : Node__46230540<Principal, Text>; var size : Nat__490723111};
+  stable accessControlState :
+    {
+      var adminAssigned : Bool;
+      userRoles : Map__605269027<Principal, UserRole__1054455867>
+    };
+  stable projects :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?VoiceProject__630031658]];
+      var elementIndex : Nat__490723111
+    };
+  stable samples :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?VoiceSample__168625415]];
+      var elementIndex : Nat__490723111
+    };
+  stable synthesisRecords :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?SynthesisRecord__99289552]];
+      var elementIndex : Nat__490723111
+    }
+};

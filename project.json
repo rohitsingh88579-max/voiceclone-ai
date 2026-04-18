@@ -1,0 +1,22 @@
+{
+  "overview": "An AI-powered voice cloning system that lets users record or upload voice samples, clone their voice using ElevenLabs AI, and synthesize natural-sounding speech from any text input using their cloned voice.",
+  "features": [
+    "Browser-based voice recording with microphone capture and playback preview",
+    "Upload pre-recorded voice files (MP3, WAV, WebM) for cloning",
+    "AI voice cloning via ElevenLabs Instant Voice Clone API",
+    "Text-to-speech synthesis using cloned voices with adjustable stability and style",
+    "Voice library dashboard to manage, play, and delete cloned voices",
+    "Download generated TTS audio as MP3",
+    "User accounts and protected voice library with Internet Identity login"
+  ],
+  "category": "productivity",
+  "tags": [
+    "voice-cloning",
+    "text-to-speech",
+    "ai",
+    "audio",
+    "elevenlabs",
+    "voice-recording"
+  ],
+  "last_updated": "2026-04-10T21:45:19.607Z"
+}
